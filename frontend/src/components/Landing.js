@@ -6,7 +6,7 @@ import differences from '../resources/illustrations/landing_fitness_stats.svg';
 
 const Landing = () => {
     const scrollDown = () => {
-        console.log('clicked');
+        window.scrollTo({ top: document.body.scrollHeight - document.querySelector(".landing-page__button").scrollHeight, behavior: 'smooth' });
     }
 
     return (
@@ -30,12 +30,12 @@ const Landing = () => {
                     <img className="w-2/3 mr-4 shrink-0" src={features} />
                     <div>
                         <h3 className="text-5xl my-20 font-semibold tracking-wide text-violet-700 underline text-center">What FIT offers</h3>
-                        <p className="text-xl tracking-wider leading-relaxed text-justify"><span className="underline decoration-pink-500/75 decoration-4">FIT</span> offers many functionalites, from a simple workout tracker, workout history log to workout plan personalisation. All of its in one place. <br/><br/>Here is a quick overview:
+                        <p className="text-xl tracking-wider leading-relaxed text-justify"><span className="underline decoration-pink-500/75 decoration-4">FIT</span> offers many functionalites, from a simple workout tracker, workout history log to workout plan personalisation. All of its in one place. <br/><br/>Here is a quick overview:</p>
                         <ul className="list-disc">
                             <li>Choose your favorite workout plan from a set of predefined plans or create your own</li>
                             <li>Personalize your workout plan by adding exercises, adding/modifying number of sets/repetition ranges</li>
                             <li>See your progression by looking into workout history</li>
-                        </ul></p>
+                        </ul>
                     </div>
                 </div>
 
@@ -58,6 +58,10 @@ const Landing = () => {
                     <i className="fa fa-solid fa-arrow-down"></i>
                 </svg>
             </div>
+
+            <button className="landing-page__button">
+                Start now
+            </button>
         </div>
     )
 }
