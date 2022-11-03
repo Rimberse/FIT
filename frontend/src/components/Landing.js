@@ -6,6 +6,7 @@ import differences from '../resources/illustrations/landing_fitness_stats.svg';
 
 const Landing = () => {
     const scrollDown = () => {
+        // Used to scroll not to the bottom exactly, but around button's position
         window.scrollTo({ top: document.body.scrollHeight - document.querySelector(".landing-page__button").scrollHeight, behavior: 'smooth' });
     }
 
@@ -31,7 +32,7 @@ const Landing = () => {
                     <div>
                         <h3 className="text-5xl my-20 font-semibold tracking-wide text-violet-700 underline text-center">What FIT offers</h3>
                         <p className="text-xl tracking-wider leading-relaxed text-justify"><span className="underline decoration-pink-500/75 decoration-4">FIT</span> offers many functionalites, from a simple workout tracker, workout history log to workout plan personalisation. All of its in one place. <br/><br/>Here is a quick overview:</p>
-                        <ul className="list-disc">
+                        <ul className="list-disc text-xl">
                             <li>Choose your favorite workout plan from a set of predefined plans or create your own</li>
                             <li>Personalize your workout plan by adding exercises, adding/modifying number of sets/repetition ranges</li>
                             <li>See your progression by looking into workout history</li>
@@ -53,13 +54,13 @@ const Landing = () => {
                 </div>
             </div>
 
-            <div className="landing-page__scroll text-violet-700 absolute bottom-10 left-3/4" onClick={scrollDown}>
+            <div className="landing-page__scroll text-violet-700 absolute bottom-10 left-3/4 cursor-pointer" onClick={scrollDown}>
                 <svg className="animate-bounce w-12 h-12">
                     <i className="fa fa-solid fa-arrow-down"></i>
                 </svg>
             </div>
 
-            <button className="landing-page__button">
+            <button className="landing-page__button w-96 h-24 p-4 text-4xl mx-auto my-32 flex justify-center items-center font-bold tracking-wide uppercase text-white bg-indigo-700 shadow-lg shadow-indigo-700/50 hover:bg-blue-500 rounded hover:-translate-y-2 ease-in-out duration-500">
                 Start now
             </button>
         </div>

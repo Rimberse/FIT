@@ -3,3 +3,8 @@
     position: fixed;
     bottom: 7.5%;
 }
+
+.landing-page__button {
+    border: 0;
+    /* padding: 0; */
+}
