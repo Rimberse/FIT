@@ -12,7 +12,7 @@ const Navbar = () => {
                 <div className="basis-1/2 justify-around items-center shrink-0">
                     <div className="flex flex-row-reverse w-full h-full justify-evenly items-center">
                         <div className="navbar__user">
-                            <UserCircleIcon className="h-12 w-12 text-indigo-700"/>
+                            <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-indigo-700"/>
                         </div>
                         <Button Name={"Workout"} />
                         <Button Name={"History"} />
