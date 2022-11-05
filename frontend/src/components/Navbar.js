@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/navbar.css';
+import Button from "./Button";
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
                         <div className="navbar__user">
                             <UserCircleIcon className="h-12 w-12 text-indigo-700"/>
                         </div>
+                        <Button Name={"Home"} />
                     </div>
                 </div>
             </div>
