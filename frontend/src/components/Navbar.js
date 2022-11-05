@@ -7,11 +7,11 @@ const Navbar = () => {
     return (
         <div id="navbar">
             <div className="flex flex-row w-3/4 h-32 mx-auto my-8">
-                <div className="basis-1/2"></div>
-                <div className="basis-1/2">
-                    <div className="flex flex-row">
+                <div className="basis-1/2 justify-around items-center"></div>
+                <div className="basis-1/2 justify-around items-center">
+                    <div className="flex flex-row-reverse w-full h-full justify-around items-center">
                         <div className="navbar__user">
-                            <UserCircleIcon className="h-10 w-10 text-indigo-700"/>
+                            <UserCircleIcon className="h-12 w-12 text-indigo-700"/>
                         </div>
                     </div>
                 </div>
