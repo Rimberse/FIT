@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/landing.css';
+import Navbar from "./Navbar";
 import app from '../resources/illustrations/landing_fitness_tracker.svg';
 import features from '../resources/illustrations/landing_personal_trainer.svg';
 import differences from '../resources/illustrations/landing_fitness_stats.svg';
@@ -29,6 +30,8 @@ const Landing = () => {
 
     return (
         <div id="landing-page">
+            <Navbar />
+            
             <h1 className="font-mono text-9xl font-bold tracking-widest text-center text-violet-700 subpixel-antialiased max-w-7xl mx-auto my-32">FIT</h1>
             <h2 className="font-mono text-7xl font-bold tracking-wide text-center text-violet-700 subpixel-antialiased max-w-7xl mx-auto">
                 Enhance your workout routine for <span className="underline decoration-pink-500 decoration-4 underline-offset-8">Better Results</span>
