@@ -9,13 +9,13 @@ const Navbar = () => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
 
     return (
-        <nav id="navbar" className="mb-8 border-2 border-b-indigo-700">
+        <nav id="navbar" className="mb-8 border-2 border-b-violet-700">
             <div className="flex flex-row w-3/4 h-32 mx-auto">
                 <div className="basis-1/2 justify-around items-center shrink-0"></div>
                 <div className="basis-1/2 justify-around items-center shrink-0">
                     {!isTabletOrMobile && <ul className="flex flex-row-reverse w-full h-full justify-evenly items-center list-none">
                         <li><div className="navbar__user">
-                            <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-indigo-700" />
+                            <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-violet-700" />
                         </div></li>
                         <li><Link Name={"Workout"} Hyperlink={"workout"} /></li>
                         <li><Link Name={"History"} Hyperlink={"history"} /></li>
