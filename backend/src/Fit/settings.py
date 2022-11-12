@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 # Application definition
 
 INSTALLED_APPS = [
-    'authenticaiton',
+    'authentication',
     'workout',
     'history',
     'django.contrib.admin',
@@ -89,6 +89,9 @@ DATABASES = {
 }
 
 
+AUTH_USER_MODEL = "authentication.User"
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -106,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Logger configuration
 LOGGING = {
