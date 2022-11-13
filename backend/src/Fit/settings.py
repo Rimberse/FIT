@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'postgres',
         'HOST': 'localhost', # db for docker - localhost for local running DB
         'PASSWORD': '776351',
-        'PORT': 5432,
+        'PORT': 6543,
     }
 }
 
