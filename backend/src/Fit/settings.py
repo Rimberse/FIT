@@ -33,11 +33,11 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 
 INSTALLED_APPS = [
     'authentication',
-    'workout',
     'history',
-    'django.contrib.admin',
-    'django.contrib.auth',
+    'workout',
+    #'django.contrib.admin',
     'django.contrib.contenttypes',
+    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'db',
+        'HOST': 'localhost', # db for docker - localhost for local running DB
         'PASSWORD': '776351',
         'PORT': 5432,
     }

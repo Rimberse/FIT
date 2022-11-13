@@ -5,7 +5,7 @@ certifi==2022.6.15.1
 cffi==1.15.1
 charset-normalizer==2.1.1
 colorama==0.4.5
-Django==4.1
+Django==4.1.1
 h11==0.13.0
 idna==3.3
 outcome==1.2.0
@@ -26,3 +26,4 @@ tzdata==2022.2
 urllib3==1.26.12
 webdriver-manager==3.8.3
 wsproto==1.2.0
+djangorestframework=3.14.0
