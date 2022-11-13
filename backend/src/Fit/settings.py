@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'authentication',
     'history',
     'workout',
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.auth',
     'django.contrib.sessions',
