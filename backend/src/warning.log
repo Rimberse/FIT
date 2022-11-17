@@ -783,3 +783,5 @@ Traceback (most recent call last):
   File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\settings.py", line 180, in import_from_string
     raise ImportError(msg)
 ImportError: Could not import 'rest_framework_simplejwt.token.AccessToken' for API setting 'AUTH_TOKEN_CLASSES'. ModuleNotFoundError: No module named 'rest_framework_simplejwt.token'.
+Unauthorized: /authentication/test/
+Unauthorized: /authentication/test/
