@@ -13,10 +13,10 @@ export const AuthenticationProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const history = useHistory();
-    const baseUrl = 'http://localhost:8000/';
+    const baseUrl = 'http://localhost:8000/authentication/';
 
     const loginUser = async (username, password) => {
-        const response = await fetch(baseUrl + '/authentication/login', {
+        const response = await fetch(baseUrl + 'login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ export const AuthenticationProvider = ({ children }) => {
     }
 
     const registerUser = async (username, password, password2) => {
-        const response = await fetch(baseUrl + '/authentication/register', {
+        const response = await fetch(baseUrl + 'register/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
