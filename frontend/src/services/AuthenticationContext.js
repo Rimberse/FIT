@@ -39,7 +39,7 @@ export const AuthenticationProvider = ({ children }) => {
         }
     }
 
-    const registerUser = async (username, password, password2) => {
+    const registerUser = async (username, email, firstName, lastName, phoneNumber, password, password2) => {
         const response = await fetch(baseUrl + 'register/', {
             method: 'POST',
             headers: {
@@ -47,6 +47,10 @@ export const AuthenticationProvider = ({ children }) => {
             },
             body: JSON.stringify({
                 username,
+                email,
+                firstName,
+                lastName,
+                phoneNumber,
                 password,
                 password2
             })
