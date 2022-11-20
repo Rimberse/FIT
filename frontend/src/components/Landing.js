@@ -80,7 +80,7 @@ const Landing = () => {
                 </svg>
             </div>
 
-            <button className="landing-page__button w-96 h-24 p-4 text-4xl mx-auto my-32 flex justify-center items-center font-bold tracking-wide uppercase text-white bg-indigo-700 shadow-lg shadow-indigo-700/50 hover:bg-blue-500 rounded-md hover:-translate-y-2 ease-in-out duration-500">
+            <button className="landing-page__button w-96 h-24 p-4 text-4xl mx-auto my-32 flex justify-center items-center font-bold tracking-wide uppercase text-white bg-violet-700 shadow-lg shadow-violet-700/50 hover:bg-indigo-500 rounded-md hover:-translate-y-2 ease-in-out duration-500">
                 Start now
             </button>
         </div>

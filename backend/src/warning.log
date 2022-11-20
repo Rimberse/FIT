@@ -805,3 +805,12 @@ Not Found: /
 Method Not Allowed: /authentication/login/
 Unauthorized: /authentication/login/
 Bad Request: /authentication/register/
+Method Not Allowed: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/

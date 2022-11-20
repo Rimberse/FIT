@@ -16,7 +16,7 @@ function App() {
         <AuthenticationProvider>
           <Routes>
             <Route element={<PrivateRoute />} path="/protected" >
-              <Route path='/protected' element={<Protected />} />
+              <Route path='/protected/test' element={<Protected />} />
             </Route>
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
