@@ -1,6 +1,7 @@
 import React from "react";
 import '../styles/navbar.css';
 import NavigationLink from "./NavigationLink";
+import { Link } from "react-router-dom";
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 import { useMediaQuery } from 'react-responsive';
 import { useContext } from "react";
@@ -48,10 +49,10 @@ const Navbar = () => {
                         <ul>
                             {user ? (
                                 <>
-                                    <li><Link Name={"Workout"} Hyperlink={"/workout"} /></li>
-                                    <li><Link Name={"History"} Hyperlink={"/history"} /></li>
-                                    <li><Link Name={"Protected page"} Hyperlink={"/protected"} /></li>
-                                    <li><Link Name={"Home"} Hyperlink={"/"} /></li>
+                                    <li><Link to={"/workout"}>Workout</Link></li>
+                                    <li><Link to={"/history"}>History</Link></li>
+                                    <li><Link to={"/protected"}>Protected page</Link></li>
+                                    <li><Link to={"/"}>Home</Link></li>
                                     <li><div className="navbar__user">
                                         <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-violet-700" />
                                     </div></li>
@@ -61,8 +62,8 @@ const Navbar = () => {
                                 </>
                             ) : (
                                 <>
-                                    <li><Link Name={"Login"} Hyperlink={"/login"} /></li>
-                                    <li><Link Name={"Register"} Hyperlink={"/register"} /></li>
+                                    <li><Link to={"/login"}>Login</Link></li>
+                                    <li><Link to={"/register"}>Register</Link></li>
                                 </>
                             )}
                             <li className="small"><a href="https://facebook.com" target="_blank">Facebook</a><a href="https://instagram.com" target="_blank">Instagram</a></li>

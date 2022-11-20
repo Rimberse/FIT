@@ -109,10 +109,7 @@
     font-size: 12px;
     font-weight: 400;
     color: #fff;
-}
-
-.small a+a {
-    margin-right: 15px;
+    margin-right: 25px;
 }
 
 #nav-container:focus-within #nav-content {
