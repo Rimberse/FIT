@@ -48,9 +48,9 @@ export const AuthenticationProvider = ({ children }) => {
             body: JSON.stringify({
                 username,
                 email,
-                firstName,
-                lastName,
-                phoneNumber,
+                first_name: firstName,
+                last_name: lastName,
+                phone_number: phoneNumber,
                 password,
                 password2
             })
@@ -59,7 +59,17 @@ export const AuthenticationProvider = ({ children }) => {
         if (response.status === 201) {
             navigate('/login');
         } else {
-            alert('Something went wrong!');
+            const data = await response.json();
+            let error = 'ERROR!\n';
+
+            // Iterate over response object and chain each error line into a single String
+            for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+                    error += key + ":\n" + data[key].toString().replaceAll(',', '\n');
+                }
+            }
+
+            alert(error);
         }
     }
 

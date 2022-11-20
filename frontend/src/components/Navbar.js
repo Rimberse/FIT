@@ -23,8 +23,8 @@ const Navbar = () => {
                                 <li><button onClick={logoutUser} className="2xl:w-24 2xl:h-10 xl:w-20 xl:h-8 lg:w-18 lg:h-6 2xl:p-2 lg:p-1 2xl:text-xl xl:text-base lg:text-xs flex justify-center items-center font-medium tracking-wide text-white bg-violet-700 rounded-none ring-offset-2 ring-offset-slate-50 outline-none no-underline cursor-pointer transition delay-100 ease-out hover:bg-white hover:text-violet-700 hover:ring hover:ring-violet-700 duration-300">
                                     Logout
                                 </button></li>
-                                <li><div className="navbar__user">
-                                    <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-violet-700" />
+                                <li><div className="2xl:text-3xl xl:text-2xl 2xl:font-bold xl:font-semibold text-violet-700">
+                                    {user.username}
                                 </div></li>
                                 <li><NavigationLink Name={"Workout"} Hyperlink={"/workout"} /></li>
                                 <li><NavigationLink Name={"History"} Hyperlink={"/history"} /></li>
@@ -33,6 +33,9 @@ const Navbar = () => {
                             </>
                         ) : (
                             <>
+                                <li><div className="navbar__user">
+                                    <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-violet-700" />
+                                </div></li>
                                 <li><NavigationLink Name={"Login"} Hyperlink={"/login"} /></li>
                                 <li><NavigationLink Name={"Register"} Hyperlink={"/register"} /></li>
                             </>
@@ -49,19 +52,22 @@ const Navbar = () => {
                         <ul>
                             {user ? (
                                 <>
+                                    <li><div className="2xl:text-3xl xl:text-2xl 2xl:font-bold xl:font-semibold">
+                                        {user.username}
+                                    </div></li>
                                     <li><Link to={"/workout"}>Workout</Link></li>
                                     <li><Link to={"/history"}>History</Link></li>
                                     <li><Link to={"/protected"}>Protected page</Link></li>
                                     <li><Link to={"/"}>Home</Link></li>
-                                    <li><div className="navbar__user">
-                                        <UserCircleIcon className="2xl:w-12 2xl:h-12 xl:w-10 xl:h-10 lg:w-8 lg:h-8 text-violet-700" />
-                                    </div></li>
                                     <li><button onClick={logoutUser} className="2xl:w-24 2xl:h-10 xl:w-20 xl:h-8 lg:w-18 lg:h-6 2xl:p-2 lg:p-1 2xl:text-xl xl:text-base lg:text-xs flex justify-center items-center font-medium tracking-wide text-white bg-violet-700 rounded-none ring-offset-2 ring-offset-slate-50 outline-none no-underline cursor-pointer transition delay-100 ease-out hover:bg-white hover:text-violet-700 hover:ring hover:ring-violet-700 duration-300">
                                         Logout
                                     </button></li>
                                 </>
                             ) : (
                                 <>
+                                    <li><div className="w-10 h-10">
+                                        <UserCircleIcon />
+                                    </div></li>
                                     <li><Link to={"/login"}>Login</Link></li>
                                     <li><Link to={"/register"}>Register</Link></li>
                                 </>

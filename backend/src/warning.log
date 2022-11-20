@@ -789,3 +789,19 @@ Not Found: /
 Not Found: /favicon.ico
 Method Not Allowed: /authentication/refresh-token/
 Method Not Allowed: /authentication/register/
+Bad Request: /authentication/login/
+Not Found: /
+Not Found: /favicon.ico
+Method Not Allowed: /authentication/login/
+Bad Request: /authentication/login/
+Bad Request: /authentication/login/
+Bad Request: /authentication/login/
+Method Not Allowed: /authentication/login/
+Bad Request: /authentication/login/
+Bad Request: /authentication/login/
+Bad Request: /authentication/login/
+Bad Request: /authentication/login/
+Not Found: /
+Method Not Allowed: /authentication/login/
+Unauthorized: /authentication/login/
+Bad Request: /authentication/register/
