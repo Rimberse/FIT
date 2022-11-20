@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import AuthenticationContext from "../services/AuthenticationContext";
 
 const Register = () => {
@@ -9,7 +9,7 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    const { registerUser } = useContext('AuthenticationContext');
+    const { registerUser } = useContext(AuthenticationContext);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -40,7 +40,7 @@ const Register = () => {
                 </div>
                 <div>
                     <label htmlFor="phoneNumber">Phone number</label>
-                    <input type="number" maxLength={10} id="phoneNumber" onChange={e => setPhoneNumber(e.target.value)} placeholder="Phone number" required></input>
+                    <input type="text" maxLength={10} id="phoneNumber" onChange={e => setPhoneNumber(e.target.value)} placeholder="Phone number" required></input>
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>

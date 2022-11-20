@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/navbar.css';
-import NavigationLink from "./Link";
-import { UserCircleIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import NavigationLink from "./NavigationLink";
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import { useMediaQuery } from 'react-responsive';
 import { useContext } from "react";
 import AuthenticationContext from "../services/AuthenticationContext";

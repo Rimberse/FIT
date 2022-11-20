@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
 import { AuthenticationProvider } from './services/AuthenticationContext';
 import Landing from './components/Landing';
@@ -14,13 +14,14 @@ function App() {
     <div className="App">
       <Router>
         <AuthenticationProvider>
-          <Landing />
-          <Switch>
-            <PrivateRoute component={Protected} path="/protected" exact />
-            <Route component={Login} path="/login" />
-            <Route component={Register} path="/register" />
-            <Route component={Landing} path="/" />
-          </Switch>
+          <Routes>
+            <Route element={<PrivateRoute />} path="/protected" >
+              <Route path='/protected' element={<Protected />} />
+            </Route>
+            <Route element={<Login />} path="/login" />
+            <Route element={<Register />} path="/register" />
+            <Route element={<Landing />} path="/" />
+          </Routes>
         </AuthenticationProvider>
       </Router>
     </div>

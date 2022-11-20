@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AuthenticationContext = createContext();
 
@@ -12,7 +12,7 @@ export const AuthenticationProvider = ({ children }) => {
     const [user, setUser] = useState(() => localStorage.getItem('authenticationTokens') ? jwt_decode(localStorage.getItem('authenticationTokens')) : null);
     const [loading, setLoading] = useState(true);
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const baseUrl = 'http://localhost:8000/authentication/';
 
     const loginUser = async (username, password) => {
@@ -33,7 +33,7 @@ export const AuthenticationProvider = ({ children }) => {
             setAuthenticationTokens(data);
             setUser(jwt_decode(data.access));
             localStorage.setItem('authenticationTokens', JSON.stringify(data));
-            history.push('/');
+            navigate('/');
         } else {
             alert('Something went wrong!');
         }
@@ -57,7 +57,7 @@ export const AuthenticationProvider = ({ children }) => {
         });
 
         if (response.status === 201) {
-            history.push('/login');
+            navigate('/login');
         } else {
             alert('Something went wrong!');
         }
@@ -67,7 +67,7 @@ export const AuthenticationProvider = ({ children }) => {
         setAuthenticationTokens(null);
         setUser(null);
         localStorage.removeItem('authenticationTokens');
-        history.push('/');
+        navigate('/');
     }
 
     const contextData = {
