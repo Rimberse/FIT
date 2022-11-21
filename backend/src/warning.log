@@ -814,3 +814,14 @@ Bad Request: /authentication/register/
 Bad Request: /authentication/register/
 Bad Request: /authentication/register/
 Bad Request: /authentication/register/
+Not Found: /authentication//refresh-token/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Bad Request: /authentication/register/
+Unauthorized: /authentication/login/
+Unauthorized: /authentication/login/

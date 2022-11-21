@@ -17,6 +17,7 @@ const Navbar = () => {
             <div className="flex flex-row w-3/4 h-32 mx-auto">
                 <div className="basis-1/2 justify-around items-center shrink-0"></div>
                 <div className="basis-1/2 justify-around items-center shrink-0">
+                    {/* Desktop version of Navbar */}
                     {!isTabletOrMobile && <ul className="flex flex-row-reverse w-full h-full justify-evenly items-center list-none">
                         {user ? (
                             <>
@@ -42,6 +43,7 @@ const Navbar = () => {
                         )}
                     </ul>}
                 </div>
+                {/* Mobile version of Navbar (Hamburger Menu) */}
                 {isTabletOrMobile && <div id="nav-container">
                     <div className="button" tabIndex="0">
                         <span className="icon-bar"></span>

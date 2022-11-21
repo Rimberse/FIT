@@ -62,10 +62,10 @@ export const AuthenticationProvider = ({ children }) => {
             const data = await response.json();
             let error = 'ERROR!\n';
 
-            // Iterate over response object and chain each error line into a single String
+            // Iterate over response object and chain append each error line into a single String line
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
-                    error += key + ":\n" + data[key].toString().replaceAll(',', '\n');
+                    error += '\n' + key + ':\n' + data[key].toString().replaceAll('\,', '\n');
                 }
             }
 

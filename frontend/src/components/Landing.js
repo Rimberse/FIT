@@ -28,6 +28,7 @@ const Landing = () => {
 
     window.addEventListener('scroll', showHideScrollIcon);
 
+    // Landing is visible to both non-authorized and authorized users
     return (
         <div id="landing-page">
             <Navbar />
