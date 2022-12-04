@@ -9,7 +9,7 @@ class Workout(models.Model):
     name = models.CharField(max_length = 50)
     date = models.DateTimeField(auto_now = False, auto_now_add = True)
     length = models.TimeField(auto_now = False, auto_now_add = False)
-    note = models.TextField(max_length = 512)
+    note = models.TextField(max_length = 512, blank=True)
     history = models.ForeignKey(History, on_delete = models.CASCADE)          # Many to one
 
     def __str__(self):
