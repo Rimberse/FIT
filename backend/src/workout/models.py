@@ -1,7 +1,7 @@
 from django.db import models
 from history.models import History
+from authentication.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
-import datetime
 
 
 # User's history contains all his workout history, since day 1
@@ -11,6 +11,7 @@ class Workout(models.Model):
     length = models.TimeField(auto_now = False, auto_now_add = False)
     note = models.TextField(max_length = 512, blank=True)
     history = models.ForeignKey(History, on_delete = models.CASCADE)          # Many to one
+    author = models.ForeignKey(User, on_delete = models.CASCADE)              # One to one
 
     def __str__(self):
         return "{}".format(self.name + ", " + self.date + ": " + self.length)
