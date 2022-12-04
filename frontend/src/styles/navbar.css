@@ -85,14 +85,14 @@
     color: #fff;
 }
 
-#nav-content li a {
+#nav-content li Link {
     padding: 10px 5px;
     display: block;
     text-transform: uppercase;
     transition: color .1s;
 }
 
-#nav-content li a:hover {
+#nav-content li Link:hover {
     color: #cbd5e1;
 }
 
@@ -109,26 +109,23 @@
     font-size: 12px;
     font-weight: 400;
     color: #fff;
-}
-
-.small a+a {
-    margin-right: 15px;
+    margin-right: 25px;
 }
 
 #nav-container:focus-within #nav-content {
     transform: none;
 }
 
-a,
-a:visited,
-a:focus,
-a:active,
-a:link {
+Link,
+Link:visited,
+Link:focus,
+Link:active,
+Link:link {
     text-decoration: none;
     outline: 0;
 }
 
-a {
+Link {
     color: currentColor;
     transition: .2s ease-in-out;
 }
