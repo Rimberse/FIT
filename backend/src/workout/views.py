@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-from .models import Workout, Exercise, Set
+from .models import Workout, Exercise, Set, History
 from .serializers import WorkoutSerializer, ExerciseSerializer, SetSerializer
 
 
@@ -24,7 +24,7 @@ class WorkoutApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'length': request.data.get('length'),
-            'history': request.data.get('history'),
+            'history': History.objects.filter(user = request.user.id),
             'author': request.user.id
         }
 

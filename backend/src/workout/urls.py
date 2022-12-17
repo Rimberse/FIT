@@ -1,4 +1,3 @@
-from django.conf.urls import url
 from django.urls import path, include
 
 from .views import (
@@ -7,6 +6,6 @@ from .views import (
 )
 
 urlpatterns = [
-    path('workout', WorkoutApiView.as_view()),
-    path('exercise', ExerciseApiView.as_view()),
+    path('workout/', WorkoutApiView.as_view()),
+    path('exercise/', ExerciseApiView.as_view()),
 ]
