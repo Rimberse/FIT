@@ -169,21 +169,36 @@ LOGGING = {
     'disable_existing_loggers': False,
     # django uses some of its own loggers for internal operations. In case you want to disable them just replace the False above with true.
     # A handler for WARNING. It is basically writing the WARNING messages into a file called WARNING.log
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+    },
     'handlers': {
+        'console': {
+            'level': 'NOTSET',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
         'file': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'warning.log',
-        },
+        }
     },
     # A logger for WARNING which has a handler called 'file'. A logger can have multiple handler
     'loggers': {
        # notice the blank '', Usually you would put built in loggers like django or root here based on your needs
         '': {
-            'handlers': ['file'], #notice how file variable is called in handler which has been defined above
-            'level': 'WARNING',
-            'propagate': True,
+            'handlers': ['console'], #notice how file variable is called in handler which has been defined above
+            'level': 'NOTSET',
+            'propagate': True
         },
+        'django.request': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'ERROR'
+        }
     },
 }
 

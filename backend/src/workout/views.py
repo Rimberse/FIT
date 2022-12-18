@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework import permissions
 from .models import Workout, Exercise, Set, History
 from .serializers import WorkoutSerializer, ExerciseSerializer, SetSerializer
+import logging
 
 
 class WorkoutApiView(APIView):
@@ -14,7 +15,7 @@ class WorkoutApiView(APIView):
     # Retrieve all workouts
     def get(self, request, *args, **kwargs):
         # Return all workout for given requested user
-        workouts = Workout.objects.filter(user = request.user.id)
+        workouts = Workout.objects.filter(author = request.user.id)
         serializer = WorkoutSerializer(workouts, many=True)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
@@ -24,7 +25,7 @@ class WorkoutApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'length': request.data.get('length'),
-            'history': History.objects.filter(user = request.user.id),
+            'history': History.objects.filter(history = request.user.id).first(),
             'author': request.user.id
         }
 

@@ -1215,3 +1215,437 @@ Bad Request: /authentication/register/
 Bad Request: /authentication/register/
 Method Not Allowed: /authentication/login/
 Not Found: /
+Internal Server Error: /workout/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (1, Push & pull, 2022-12-18 00:46:52.492217+00, 01:30:00, , null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 33, in post
+    serializer.save()
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 671, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 831, in save
+    self.save_base(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 882, in save_base
+    updated = self._save_table(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1025, in _save_table
+    results = self._do_insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1066, in _do_insert
+    return manager._insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1790, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1657, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (1, Push & pull, 2022-12-18 00:46:52.492217+00, 01:30:00, , null, null).
+
+Internal Server Error: /authentication/test
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\middleware\common.py", line 88, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/authentication/test/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+Unauthorized: /authentication/test/
+Internal Server Error: /workout/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 17, in get
+    workouts = Workout.objects.filter(user = request.user.id)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: author, author_id, date, exercise, history, history_id, id, length, name, note
+Internal Server Error: /training/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 17, in get
+    workouts = Workout.objects.filter(user = request.user.id)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: author, author_id, date, exercise, history, history_id, id, length, name, note
+Internal Server Error: /training/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 17, in get
+    workouts = Workout.objects.filter(user = request.user.id)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: author, author_id, date, exercise, history, history_id, id, length, name, note
+Internal Server Error: /training/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 17, in get
+    workouts = Workout.objects.filter(user = request.user.id)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: author, author_id, date, exercise, history, history_id, id, length, name, note
+Not Found: /training/
+Unauthorized: /workout/
+Internal Server Error: /workout/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (2, Push & pull, 2022-12-18 00:59:05.731916+00, 01:30:00, , null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 33, in post
+    serializer.save()
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 671, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 831, in save
+    self.save_base(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 882, in save_base
+    updated = self._save_table(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1025, in _save_table
+    results = self._do_insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1066, in _do_insert
+    return manager._insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1790, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1657, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (2, Push & pull, 2022-12-18 00:59:05.731916+00, 01:30:00, , null, null).
+
+Internal Server Error: /workout/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (3, Push & pull, 2022-12-18 01:01:04.058367+00, 01:30:00, , null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 35, in post
+    serializer.save()
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 671, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 831, in save
+    self.save_base(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 882, in save_base
+    updated = self._save_table(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1025, in _save_table
+    results = self._do_insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1066, in _do_insert
+    return manager._insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1790, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1657, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (3, Push & pull, 2022-12-18 01:01:04.058367+00, 01:30:00, , null, null).
+
+Internal Server Error: /workout/
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (4, Push & pull, 2022-12-18 01:02:00.105806+00, 01:30:00, , null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Projects\FIT\backend\src\workout\views.py", line 35, in post
+    serializer.save()
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 671, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 831, in save
+    self.save_base(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 882, in save_base
+    updated = self._save_table(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1025, in _save_table
+    results = self._do_insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1066, in _do_insert
+    return manager._insert(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1790, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1657, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\CLEVO Computer\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "history_id" of relation "workout_workout" violates not-null constraint
+DETAIL:  Failing row contains (4, Push & pull, 2022-12-18 01:02:00.105806+00, 01:30:00, , null, null).
+
