@@ -14,7 +14,7 @@ class Workout(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE)              # Many to one
 
     def __str__(self):
-        return f'({self.name}, {self.date}: {self.length})'
+        return f'{self.name}, {self.date}: {self.length}'
 
 
 # One workout may contain multiple exercises composed either from a dedicated program, or from manually created by user
@@ -24,7 +24,7 @@ class Exercise(models.Model):
     workout = models.ForeignKey(Workout, on_delete = models.CASCADE)          # Many to one
 
     def __str__(self):
-        return "{}".format(self.name + ", " + self.instructions)
+        return f'{self.name}: {self.instructions}'
 
 
 # Used by Exercise model to count sets within exercise and repetition ranges, one exercise may contain multiple sets
@@ -44,4 +44,4 @@ class Set(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete = models.CASCADE)          # Many to one
 
     def __str__(self):
-        return "{}".format(self.repetitions + ", " + self.kilograms + ": " + self.isFinished)
+        return f'{self.repetitions}/{self.time}, {self.kilograms}/{self.kilometers}: finished: {self.isFinished}, failed: {self.isFailed}'

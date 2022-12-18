@@ -36,10 +36,10 @@ class WorkoutApiView(APIView):
 
         # Get current datetime instance
         now = datetime.now(pytz.utc)
-        # Check in user's workout history if it's already contains same workout, if it's the case don't allow it => return Forbidden, if not create one (Can't simustaneosly create several workout during the same time period)
-        # - this is to prevent polluting database with the same workout and it's details
+        # Check in user's workout history if it already contains similar workout, if it's the case cancel workout creation => return Forbidden, if not create one (Explannation: users can't simustaneosly create several workout during the same time period)
+        # - this is to prevent polluting database with the same workout details, users can only create a new workout each minute in the same day
         if Workout.objects.filter(name = request.data.get('name'), length = request.data.get('length'), date__date = now.date(), date__hour = datetime.now(pytz.utc).hour, date__minute = datetime.now(pytz.utc).minute, author = request.user.id).exists():
-                return Response("Workout already exists", status = status.HTTP_403_FORBIDDEN)
+                return Response({'error': 'Unable to create a workout, since it already exists'}, status = status.HTTP_403_FORBIDDEN)
         else:
                 serializer = WorkoutSerializer(data = data)
                 if (serializer.is_valid()):

@@ -7,4 +7,4 @@ class History(models.Model):
     history = models.OneToOneField(User, on_delete = models.CASCADE)          # One to one
 
     def __str__(self):
-        return "{}".format(self.history)
+        return self.history

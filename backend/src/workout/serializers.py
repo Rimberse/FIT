@@ -12,10 +12,10 @@ class WorkoutSerializer(serializers.ModelSerializer):
 class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
-        fields = ['name', 'instructions']
+        fields = ['name', 'instructions', 'workout']
 
 
 class SetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Set
-        fields = ['kilograms', 'repetitions', 'kilometers', 'time', 'isFinished', 'isFailed']
+        fields = ['kilograms', 'pounds', 'repetitions', 'kilometers', 'miles', 'time', 'isFinished', 'isFailed', 'exercise']
