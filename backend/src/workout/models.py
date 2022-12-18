@@ -11,10 +11,10 @@ class Workout(models.Model):
     length = models.TimeField(auto_now = False, auto_now_add = False)
     note = models.TextField(max_length = 512, blank=True)
     history = models.ForeignKey(History, on_delete = models.CASCADE)          # Many to one
-    author = models.ForeignKey(User, on_delete = models.CASCADE)              # One to one
+    author = models.ForeignKey(User, on_delete = models.CASCADE)              # Many to one
 
     def __str__(self):
-        return "{}".format(self.name + ", " + self.date + ": " + self.length)
+        return f'({self.name}, {self.date}: {self.length})'
 
 
 # One workout may contain multiple exercises composed either from a dedicated program, or from manually created by user
@@ -24,7 +24,7 @@ class Exercise(models.Model):
     workout = models.ForeignKey(Workout, on_delete = models.CASCADE)          # Many to one
 
     def __str__(self):
-        return "{}".format(self.username + ", " + self.email + ": " + self.first_name + " " + self.last_name)
+        return "{}".format(self.name + ", " + self.instructions)
 
 
 # Used by Exercise model to count sets within exercise and repetition ranges, one exercise may contain multiple sets

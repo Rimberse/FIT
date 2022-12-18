@@ -5,7 +5,8 @@ from .models import Workout, Exercise, Set
 class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['name', 'length', 'note']
+        # Serializer should contain all fields specified within a class model
+        fields = ['name', 'date', 'length', 'note', 'history', 'author']
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
