@@ -74,3 +74,15 @@ class ExerciseApiView(APIView):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+class SetApiView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    # Retrieve all sets for associated exercise
+    def get(self, request, *args, **kwargs):
+        pass
+
+    # Assign set to existing exercise
+    def post(self, request, *args, **kwargs):
+        pass
