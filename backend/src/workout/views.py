@@ -64,7 +64,8 @@ class ExerciseApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'instructions': request.data.get('instructions'),
-            'workout': request.data.get('workout')
+            # Exercise can either be created independently from workout sessions to compose programs or be added to latest workout sessions, along with sets
+            'workout': request.data.get('workout') if request.data.get('workout') is not None else Workout.objects.filter(author = request.user.id).last().id
         }
 
         serializer = ExerciseSerializer(data = data)
