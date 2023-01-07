@@ -64,7 +64,7 @@ class ExerciseApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'instructions': request.data.get('instructions'),
-            # Exercise can either be created independently from workout sessions to compose programs or be added to latest workout sessions, along with sets
+            # Exercises can either be created independently from workout sessions to compose programs or be added to latest workout sessions, along with sets
             'workout': request.data.get('workout') if request.data.get('workout') is not None else Workout.objects.filter(author = request.user.id).last().id
         }
 
@@ -88,4 +88,22 @@ class SetApiView(APIView):
 
     # Add set to existing exercise
     def post(self, request, *args, **kwargs):
-        pass
+        data = {
+            'kilograms': request.data.get('kilograms') if request.data.get('kilograms') is not None else 0,
+            'pounds': float(request.data.get('kilograms')) * 2.2046 if request.data.get('kilograms') is not None else 0,
+            'repetitions': request.data.get('repetitions') if request.data.get('repetitions') is not None else 0,
+            'kilometers': request.data.get('kilometers') if request.data.get('kilometers') is not None else 0,
+            'miles': float(request.data.get('kilometers')) * 0.621371 if request.data.get('kilometers') is not None else 0,
+            'time': request.data.get('time') if request.data.get('time') is not None else '00:00:00',
+            'isFinished': request.data.get('isFinished'),
+            'isFailed': request.data.get('isFailed'),
+            # Add sets to last created exercise
+            'exercise': request.data.get('exercise') if request.data.get('exercise') is not None else Exercise.objects.filter(workout = Workout.objects.filter(author = request.user.id).last().id).last().id
+        }
+
+        serializer = SetSerializer(data = data)
+        if (serializer.is_valid()):
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
