@@ -16,7 +16,7 @@ class WorkoutApiView(APIView):
 
     # Retrieve all workouts sessions
     def get(self, request, *args, **kwargs):
-        # Return all workout for given requested user
+        # Return all workouts for given requested user
         workouts = Workout.objects.filter(author = request.user.id)
         serializer = WorkoutSerializer(workouts, many=True)
         return Response(serializer.data, status = status.HTTP_200_OK)
@@ -54,8 +54,8 @@ class ExerciseApiView(APIView):
 
     # Retrieve all exercises
     def get(self, request, *args, **kwargs):
-        # Return all workout for given requested user
-        exercises = Exercise.objects.all()
+        # Return all exercises for last created workout
+        exercises = Exercise.objects.filter(workout = Workout.objects.filter(author = request.user.id).last().id)
         serializer = ExerciseSerializer(exercises, many=True)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
