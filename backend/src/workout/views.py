@@ -81,8 +81,11 @@ class SetApiView(APIView):
 
     # Retrieve all sets for associated exercise
     def get(self, request, *args, **kwargs):
-        pass
+        # Return all sets for given exercise
+        sets = Set.objects.filter(exercise__in = Exercise.objects.filter(workout = Workout.objects.filter(author = request.user.id).last().id))
+        serializer = SetSerializer(sets, many=True)
+        return Response(serializer.data, status = status.HTTP_200_OK)
 
-    # Assign set to existing exercise
+    # Add set to existing exercise
     def post(self, request, *args, **kwargs):
         pass
