@@ -3,16 +3,20 @@ from .models import Workout, Exercise, Set
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Workout
         # Serializer should contain all fields specified within a class model
-        fields = ['name', 'date', 'length', 'note', 'history', 'author']
+        fields = ['id', 'name', 'date', 'length', 'note', 'history', 'author']
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Exercise
-        fields = ['name', 'instructions', 'workout']
+        fields = ['id', 'name', 'instructions', 'workout']
 
 
 class SetSerializer(serializers.ModelSerializer):

@@ -97,7 +97,7 @@ class SetApiView(APIView):
             'time': request.data.get('time') if request.data.get('time') is not None else '00:00:00',
             'isFinished': request.data.get('isFinished'),
             'isFailed': request.data.get('isFailed'),
-            # Add sets to last created exercise
+            # Add sets to the last created exercise of the latest workout session
             'exercise': request.data.get('exercise') if request.data.get('exercise') is not None else Exercise.objects.filter(workout = Workout.objects.filter(author = request.user.id).last().id).last().id
         }
 
