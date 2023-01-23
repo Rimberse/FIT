@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import Login from './components/Login';
 import Register from './components/Register';
 import Protected from './components/Protected';
+import Workout from './components/Workout';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <AuthenticationProvider>
           <Routes>
             <Route element={<PrivateRoute />} path="/protected" >
+              <Route path='/protected/workout' element={<Workout />} />
               <Route path='/protected/test' element={<Protected />} />
             </Route>
             <Route element={<Login />} path="/login" />

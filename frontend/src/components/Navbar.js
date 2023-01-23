@@ -27,7 +27,7 @@ const Navbar = () => {
                                 <li><div className="2xl:text-3xl xl:text-2xl 2xl:font-bold xl:font-semibold text-violet-700">
                                     {user.username}
                                 </div></li>
-                                <li><NavigationLink Name={"Workout"} Hyperlink={"/workout"} /></li>
+                                <li><NavigationLink Name={"Workout"} Hyperlink={"/protected/workout"} /></li>
                                 <li><NavigationLink Name={"History"} Hyperlink={"/history"} /></li>
                                 <li><NavigationLink Name={"Protected page"} Hyperlink={"/protected/test"} /></li>
                                 <li><NavigationLink Name={"Home"} Hyperlink={"/"} /></li>
@@ -57,7 +57,7 @@ const Navbar = () => {
                                     <li><div className="2xl:text-3xl xl:text-2xl 2xl:font-bold xl:font-semibold">
                                         {user.username}
                                     </div></li>
-                                    <li><Link to={"/workout"}>Workout</Link></li>
+                                    <li><Link to={"/protected/workout"}>Workout</Link></li>
                                     <li><Link to={"/history"}>History</Link></li>
                                     <li><Link to={"/protected/test"}>Protected page</Link></li>
                                     <li><Link to={"/"}>Home</Link></li>

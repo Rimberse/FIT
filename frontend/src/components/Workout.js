@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useAxios from "../utils/UseAxios";
 
 const Workout = () => {
+    const [response, setResponse] = useState('');
+    const api = useAxios();
 
     return(
         <div>
