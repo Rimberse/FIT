@@ -7,7 +7,7 @@ const Workout = () => {
 
     return(
         <div>
-            <h1>Workout</h1>
+            <h1 className="text-9xl font-bold tracking-wide text-stone-900 text-center align-middle max-w-7xl mx-auto my-24">Workout</h1>
         </div>
     );
 };
