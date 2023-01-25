@@ -61,6 +61,23 @@ const Tracker = () => {
         <div>
             <h1>Test</h1>
             <div>{timer}</div>
+            <table>
+                <tr>
+                    <th>Title1</th>
+                    <th>Title2</th>
+                    <th>Title3</th>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                </tr>
+                <tr>
+                    <td>d</td>
+                    <td>e</td>
+                    <td>f</td>
+                </tr>
+            </table>
         </div>
     );
 }
