@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Set from "./Set";
 
 const Exercise = () => {
+    const [sets, setSets] = useState([]);
+    const [totalSets, setTotalSets] = useState(1);
+
+    const onAddSet = () => {
+        // Respects immutability
+        setSets(sets.concat([<Set key={totalSets} setNumber={totalSets} />]));
+        setTotalSets(totalSets + 1);
+    };
 
     return (
         <div className="table-fixed grid grid-rows-4 divide-y divide-stone-700 rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20">
@@ -13,8 +21,8 @@ const Exercise = () => {
                 <span className="p-2 inline-flex justify-center items-center">Reps</span>
                 <span className="p-2 inline-flex justify-center items-center">Status</span>
             </div>
-            <Set />
-            <button className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
+            { sets }
+            <button onClick={onAddSet} className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
         </div>
     );
 }
