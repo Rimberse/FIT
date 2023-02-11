@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../styles/landing.css';
 import Navbar from "./Navbar";
 import app from '../resources/illustrations/landing_fitness_tracker.svg';
@@ -26,7 +26,10 @@ const Landing = () => {
         }
     }
 
-    window.addEventListener('scroll', showHideScrollIcon);
+    useEffect(() => {
+        window.addEventListener('scroll', showHideScrollIcon);
+        return () => window.removeEventListener('scroll', showHideScrollIcon);
+    }, []);
 
     // Landing is visible to both non-authorized and authorized users
     return (
