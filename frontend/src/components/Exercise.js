@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Set from "./Set";
 
 const Exercise = () => {
     const [sets, setSets] = useState([]);
     const [totalSets, setTotalSets] = useState(1);
+    const [removedSets, setRemovedSets] = useState([]);
 
     const onAddSet = () => {
         // Respects immutability
-        setSets(sets.concat([<Set key={totalSets} setNumber={totalSets} />]));
+        setSets(sets.concat([<Set key={totalSets - 1} setNumber={totalSets} removeSet={onRemoveSet} />]));
         setTotalSets(totalSets + 1);
     };
+
+    const onRemoveSet = index => {
+        if (removedSets.includes(index))
+            return;
+
+        setRemovedSets([...removedSets, index]);
+    }
+
+    useEffect(() => {
+        // Find out the difference between Displayed sets and Removed sets
+        setSets(sets.filter(set => !removedSets.includes(Number(set.key))));
+    }, [removedSets]);
 
     return (
         <div className="table-fixed grid grid-rows-4 divide-y divide-stone-700 rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20">
