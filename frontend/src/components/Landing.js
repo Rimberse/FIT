@@ -28,6 +28,7 @@ const Landing = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', showHideScrollIcon);
+        // Removes event listener, once component has been unmounted
         return () => window.removeEventListener('scroll', showHideScrollIcon);
     }, []);
 
