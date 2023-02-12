@@ -3,20 +3,16 @@ import Set from "./Set";
 
 const Exercise = () => {
     const [sets, setSets] = useState([]);
-    const [totalSets, setTotalSets] = useState(1);
-    const [refs, setRefs] = useState([]);
+    const refs = useRef([]);
 
-    // Scales refs Array accordingly to then numbers of sets
-    /*useEffect(() => {
-        console.log(sets);
-        setRefs(refs => 
-            // Creates references to existing sets
-            Array(sets.length).fill().map((_, index) => refs[index] || createRef() ));
-    }, [sets]);*/
+    // Scales refs Array accordingly to the numbers of existing Sets
+    useEffect(() => {
+        refs.current = refs.current.slice(0, sets.length);
+    }, [sets]);
 
 
     const onAddSet = () => {
-        // Respects immutability
+        // Respect immutability
         setSets(sets.concat([{
             number: sets.length + 1,
             previous: '...',
@@ -28,17 +24,8 @@ const Exercise = () => {
     };
 
     const onRemoveSet = index => {
-        console.log("Index: " + index);
-        // console.log(refs.current.slice(0, index).concat(refs.current.slice(index + 1)));
-        // console.log(sets.slice(0, index).concat(sets.slice(index + 1))); 
+        refs.current.filter((ref, i) => i !== index).forEach(ref => ref.processChanges());
         setSets(sets.slice(0, index).concat(sets.slice(index + 1)));
-        // console.log(refs);
-        // refs.forEach(ref => ref.processChanges());
-        // refs.current = refs.current.slice(0, index).concat(refs.current.slice(index + 1));
-        // if (removedSets.includes(index))
-        //     return;
-
-        // setRemovedSets([...removedSets, index]);
     }
 
     return (
@@ -51,7 +38,7 @@ const Exercise = () => {
                 <span className="p-2 inline-flex justify-center items-center">Reps</span>
                 <span className="p-2 inline-flex justify-center items-center">Status</span>
             </div>
-            {sets.map((set, index) => <Set ref={refs[index]} key={index} setNumber={index + 1} sets={sets} setSets={setSets} removeSet={onRemoveSet} />)}
+            {sets.map((set, index) => <Set ref={ref => refs.current[index] = ref} key={index} setNumber={index + 1} sets={sets} setSets={setSets} removeSet={onRemoveSet} />)}
             <button onClick={onAddSet} className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
         </div>
     );
