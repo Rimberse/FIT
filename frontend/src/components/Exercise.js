@@ -1,28 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, createRef } from "react";
 import Set from "./Set";
 
 const Exercise = () => {
     const [sets, setSets] = useState([]);
     const [totalSets, setTotalSets] = useState(1);
-    const [removedSets, setRemovedSets] = useState([]);
+    const [refs, setRefs] = useState([]);
+
+    // Scales refs Array accordingly to then numbers of sets
+    /*useEffect(() => {
+        console.log(sets);
+        setRefs(refs => 
+            // Creates references to existing sets
+            Array(sets.length).fill().map((_, index) => refs[index] || createRef() ));
+    }, [sets]);*/
+
 
     const onAddSet = () => {
         // Respects immutability
-        setSets(sets.concat([<Set key={totalSets - 1} setNumber={totalSets} removeSet={onRemoveSet} />]));
-        setTotalSets(totalSets + 1);
+        setSets(sets.concat([{
+            number: sets.length + 1,
+            previous: '...',
+            kilograms: '',
+            repetitions: '',
+            isFinished: false,
+            isFailed: false
+        }]));
     };
 
     const onRemoveSet = index => {
-        if (removedSets.includes(index))
-            return;
+        console.log("Index: " + index);
+        // console.log(refs.current.slice(0, index).concat(refs.current.slice(index + 1)));
+        // console.log(sets.slice(0, index).concat(sets.slice(index + 1))); 
+        setSets(sets.slice(0, index).concat(sets.slice(index + 1)));
+        // console.log(refs);
+        // refs.forEach(ref => ref.processChanges());
+        // refs.current = refs.current.slice(0, index).concat(refs.current.slice(index + 1));
+        // if (removedSets.includes(index))
+        //     return;
 
-        setRemovedSets([...removedSets, index]);
+        // setRemovedSets([...removedSets, index]);
     }
-
-    useEffect(() => {
-        // Find out the difference between Displayed sets and Removed sets
-        setSets(sets.filter(set => !removedSets.includes(Number(set.key))));
-    }, [removedSets]);
 
     return (
         <div className="table-fixed grid grid-rows-4 divide-y divide-stone-700 rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20">
@@ -34,7 +51,7 @@ const Exercise = () => {
                 <span className="p-2 inline-flex justify-center items-center">Reps</span>
                 <span className="p-2 inline-flex justify-center items-center">Status</span>
             </div>
-            { sets }
+            {sets.map((set, index) => <Set ref={refs[index]} key={index} setNumber={index + 1} sets={sets} setSets={setSets} removeSet={onRemoveSet} />)}
             <button onClick={onAddSet} className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
         </div>
     );
