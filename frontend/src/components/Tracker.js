@@ -58,11 +58,15 @@ const Tracker = () => {
         };
     }, []);
 
+    const onAddExercise = () => {
+
+    }
+
     return (
-        <div>
-            <h1>Test</h1>
-            <div>{timer}</div>
+        <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20 p-8">
+            <div className="justify-self-start text-4xl font-bold tracking-wide w-1/4 m-2">{timer}</div>
             <Exercise />
+            <button onClick={onAddExercise} className="p-4 bg-stone-300 text-stone-900 justify-self-center m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add exercise</button>
         </div>
     );
 }
