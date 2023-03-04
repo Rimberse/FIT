@@ -67,14 +67,19 @@ const Tracker = () => {
 
     const onAddExercise = () => {
         setExercises(exercises.concat([{
-            name: ''
+            name: 'Enter exercise name'
         }]));
+    }
+
+    const onRemoveExercise = index => {
+        refs.current.filter((ref, i) => i !== index).forEach(ref => ref.processChanges());
+        setExercises(exercises.slice(0, index).concat(exercises.slice(index + 1)));
     }
 
     return (
         <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20 p-8">
             <div className="justify-self-start text-4xl font-bold tracking-wide w-1/4 m-2">{timer}</div>
-            {exercises.map((exercise, index) => <Exercise ref={ref => refs.current[index] = ref} key={index} />)}
+            {exercises.map((exercise, index) => <Exercise ref={ref => refs.current[index] = ref} key={index} exerciseNumber={index} exercises={exercises} setExercises={setExercises} removeExercise={onRemoveExercise} />)}
             <button onClick={onAddExercise} className="p-4 bg-stone-300 text-stone-900 justify-self-center m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add exercise</button>
         </div>
     );
