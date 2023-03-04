@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, createRef } from "react";
+import React, { useState, useEffect, useRef, createRef, forwardRef } from "react";
 import Set from "./Set";
 
-const Exercise = () => {
+const Exercise = forwardRef(({ }, ref) => {
     const [sets, setSets] = useState([]);
     const refs = useRef([]);
 
@@ -43,6 +43,6 @@ const Exercise = () => {
             <button onClick={onAddSet} className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
         </div>
     );
-}
+});
 
 export default Exercise;
