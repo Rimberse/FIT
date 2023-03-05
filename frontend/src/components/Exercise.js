@@ -9,8 +9,6 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
 
     // Pre-fills with existing sets, if some exercise got deleted
     useEffect(() => {
-        console.log("Use effect:");
-        console.log(exercises[exerciseNumber]['sets']);
         setSets(exercises[exerciseNumber]['sets']);
     }, [exercises]);
 
@@ -66,7 +64,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
                 <span className="p-2 inline-flex justify-center items-center my-2">Previous</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Kg / Lbs</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Reps</span>
-                <span className="p-2 inline-flex justify-center items-center my-2">Status</span>
+                <span className="p-2 inline-flex justify-center items-center my-2">Completion</span>
                 <span className="h-7 w-7 justify-self-end self-center mr-5 my-2"></span>
             </div>
             {sets.map((set, index) => <Set ref={ref => refs.current[index] = ref} key={index} setNumber={index + 1} sets={sets} setSets={setSets} removeSet={onRemoveSet} />)}
