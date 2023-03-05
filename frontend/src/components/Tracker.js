@@ -67,7 +67,8 @@ const Tracker = () => {
 
     const onAddExercise = () => {
         setExercises(exercises.concat([{
-            name: 'Enter exercise name'
+            name: 'Enter exercise name',
+            sets: []
         }]));
     }
 

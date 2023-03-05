@@ -7,16 +7,26 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
     const name = createRef();
     const isMounted = useRef(false);
 
+    // Pre-fills with existing sets, if some exercise got deleted
+    useEffect(() => {
+        console.log("Use effect:");
+        console.log(exercises[exerciseNumber]['sets']);
+        setSets(exercises[exerciseNumber]['sets']);
+    }, [exercises]);
+
     // Scales refs Array accordingly to the numbers of existing Sets
     useEffect(() => {
         refs.current = refs.current.slice(0, sets.length);
         isMounted.current = true;
         return () => { isMounted.current = false }
-    }, [exercises, sets]);
+    }, [sets]);
 
     const processChanges = () => {
         const updatedExercise = exercises[exerciseNumber];
+        // Retrieve latest input field values, if changed
+        refs.current.forEach(ref => ref.processChanges());
         updatedExercise['name'] = name.current.value;
+        updatedExercise['sets'] = sets;
         setExercises(exercises.slice(0, exerciseNumber).concat([updatedExercise].concat(exercises.slice(exerciseNumber + 1))));
     }
 
