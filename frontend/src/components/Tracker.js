@@ -66,6 +66,9 @@ const Tracker = () => {
     }, []);
 
     const onAddExercise = () => {
+        // Keeps pre-filled input values of existing sets
+        refs.current.forEach(ref => ref.processChanges());
+
         setExercises(exercises.concat([{
             name: 'Enter exercise name',
             sets: []
