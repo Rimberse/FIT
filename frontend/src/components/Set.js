@@ -17,13 +17,13 @@ const Set = forwardRef(({ setNumber, sets, setSets, removeSet }, ref) => {
         updatedSet['kilograms'] = Number(weight.current.value);
         updatedSet['repetitions'] = Number(repetitions.current.value);
         updatedSet['isFinished'] = completion.current.checked;
-        updatedSet['isFailed'] = !completion.current.value;
+        updatedSet['isFailed'] = !completion.current.checked;
         setSets(sets.slice(0, setNumber - 1).concat([updatedSet].concat(sets.slice(setNumber))));
     }
 
     useImperativeHandle(ref, () => {
         return {
-            processChanges: processChanges
+            processChanges
         }
     });
 

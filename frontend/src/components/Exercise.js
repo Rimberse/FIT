@@ -7,7 +7,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
     const name = createRef();
     const isMounted = useRef(false);
 
-    // Pre-fills with existing sets, if some exercise got deleted
+    // Pre-fills with existing sets, if some of the exercises has been removed
     useEffect(() => {
         setSets(exercises[exerciseNumber]['sets']);
     }, [exercises]);
@@ -30,7 +30,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
 
     useImperativeHandle(ref, () => {
         return {
-            processChanges: processChanges
+            processChanges
         }
     });
 

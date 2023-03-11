@@ -63,7 +63,7 @@ class ExerciseApiView(APIView):
     def post(self, request, *args, **kwargs):
         data = {
             'name': request.data.get('name'), 
-            'instructions': request.data.get('instructions'),
+            'instructions': request.data.get('instructions') if request.data.get('instructions') is not None else '',
             # Exercises can either be created independently from workout sessions to compose programs or be added to latest workout sessions, along with sets
             'workout': request.data.get('workout') if request.data.get('workout') is not None else Workout.objects.filter(author = request.user.id).last().id
         }
