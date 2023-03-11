@@ -4,7 +4,7 @@ import Tracker from "./Tracker";
 
 const Workout = () => {
     const [isTrackerVisible, setIsTrackerVisible] = useState(false);
-    const [response, setResponse] = useState('');
+    const [responses, setResponses] = useState([]);
     const api = useAxios();
     const tracker = useRef(null);
 
@@ -12,28 +12,45 @@ const Workout = () => {
         tracker.current.processChanges();
         console.log(tracker.current.workout);
 
-        const body = {
-
+        let body = {
+            name: tracker.current.workout.name,
+            length: tracker.current.workout.length
         };
 
-        const fetchData = async () => {
-            try {
-                const response = await api('/wokrouts/', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-                setResponse(response.data.response);
-            } catch {
-                setResponse('Something went wrong. Couldn\'t save workout session');
-            }
-        }
+        postData('workouts/', body)
+            .then(response => {
+                console.log(response);
+                tracker.current.workout.exercises.forEach(exercise => {
+                    body = {
+                        name: exercise.name
+                    }
 
-        // fetchData();
+                    postData('exercises/', body)
+                        .then(response => {
+                            console.log(response);
+                            exercise.sets.forEach(set => {
+                                body = {
+                                    kilograms: set.kilograms,
+                                    repetitions: set.repetitions,
+                                    isFinished: set.isFinished,
+                                    isFailed: set.isFailed
+                                }
+
+                                postData('sets/', body);
+                            });
+                        });
+                });
+            });
     };
+
+    const postData = async (URL, body) => {
+        try {
+            const response = await api.post(URL, body);
+            setResponses(responses.concat(response.data.response));
+        } catch {
+            setResponses(responses.concat('Something went wrong. Couldn\'t save workout session'));
+        }
+    }
 
     return (
         <div>

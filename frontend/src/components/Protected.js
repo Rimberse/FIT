@@ -8,7 +8,7 @@ const Protected = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('/test/');
+                const response = await api.get('authentication/test/');
                 setResponse(response.data.response);
             } catch {
                 setResponse('Something went wrong');

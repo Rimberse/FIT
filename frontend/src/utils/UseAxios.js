@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { useContext } from 'react';
 import AuthenticationContext from '../services/AuthenticationContext';
 
-const baseURL = 'http://localhost:8000/authentication/';
+const baseURL = 'http://localhost:8000/';
 
 const useAxios = () => {
     const { authenticationTokens, setUser, setAuthenticationTokens } = useContext(AuthenticationContext);
@@ -23,7 +23,7 @@ const useAxios = () => {
         if (!isExpired)
             return request;
 
-        const response = await axios.post(`${baseURL}refresh-token/`, {
+        const response = await axios.post(`${baseURL}authentication/refresh-token/`, {
             refresh: authenticationTokens.refresh
         });
 
