@@ -23,6 +23,7 @@ class WorkoutApiView(APIView):
 
     # Create workout
     def post(self, request, *args, **kwargs):
+        logging.info(f'Body: {request.data}');
         # Create workout data for a given user
         data = {
             'name': request.data.get('name'), 
@@ -88,6 +89,7 @@ class SetApiView(APIView):
 
     # Add set to existing exercise
     def post(self, request, *args, **kwargs):
+         
         data = {
             'kilograms': request.data.get('kilograms') if request.data.get('kilograms') is not None else 0,
             'pounds': float(request.data.get('kilograms')) * 2.2046 if request.data.get('kilograms') is not None else 0,

@@ -20,7 +20,7 @@ class Workout(models.Model):
 # One workout may contain multiple exercises composed either from a dedicated program, or from manually created by user
 class Exercise(models.Model):
     name = models.CharField(max_length = 50)
-    instructions = models.TextField(max_length = 2048)
+    instructions = models.TextField(max_length = 2048, blank=True)
     workout = models.ForeignKey(Workout, on_delete = models.CASCADE)          # Many to one
 
     def __str__(self):
