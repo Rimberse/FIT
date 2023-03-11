@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
+import React, { useEffect, useState, useRef, createRef, forwardRef, useImperativeHandle } from "react";
 import useAxios from "../utils/UseAxios";
 import SelfAdjustingInterval from "../utils/SelfAdjustingInterval";
 import Exercise from "./Exercise";
@@ -9,6 +9,7 @@ const Tracker = forwardRef(({  }, ref) => {
     const [date, setDate] = useState(new Date());
     const [exercises, setExercises] = useState([]);
     const refs = useRef([]);
+    const name = createRef();
     // The third argument is optional
     const ticker = useRef(new SelfAdjustingInterval(() => countUp(), 1000, () => countUpError()));
     const api = useAxios();
@@ -86,9 +87,9 @@ const Tracker = forwardRef(({  }, ref) => {
     useImperativeHandle(ref, () => {
         return {
             processChanges,
-            
+
             workout: {
-                name: '',
+                name: name.current.value,
                 length: timer,
                 exercises
             }
@@ -97,7 +98,10 @@ const Tracker = forwardRef(({  }, ref) => {
 
     return (
         <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20 p-8">
-            <div className="justify-self-start text-4xl font-bold tracking-wide w-1/4 m-2">{timer}</div>
+            <div className="flex justify-between content-center m-2">
+                <span className="justify-self-start self-center text-4xl font-bold tracking-wide w-1/4">{timer}</span>
+                <input type="text" id="name" name="name" ref={name} className="justify-self-end self-center p-2 text-center text-2xl font-bold tracking-wide bg-stone-700 w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1" defaultValue={'Enter workout name'} key={name} />
+            </div>
             {exercises.map((exercise, index) => <Exercise ref={ref => refs.current[index] = ref} key={index} exerciseNumber={index} exercises={exercises} setExercises={setExercises} removeExercise={onRemoveExercise} />)}
             <button onClick={onAddExercise} className="p-4 bg-stone-300 text-stone-900 justify-self-center m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add exercise</button>
         </div>
