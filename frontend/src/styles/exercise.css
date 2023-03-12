@@ -1,0 +1,24 @@
+#instructions {
+    transition: all 5s ease;
+    animation: appearAnimation 500ms linear both;
+}
+
+@keyframes appearAnimation {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 20%;
+    }
+}
+
+@keyframes disappearAnimation {
+    from {
+        width: 20%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
