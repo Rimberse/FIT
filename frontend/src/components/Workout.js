@@ -10,7 +10,9 @@ const Workout = () => {
 
     const onFinish = () => {
         tracker.current.processChanges();
-        console.log(tracker.current.workout);
+
+        if (tracker.current.workout.exercises.length == 0 || tracker.current.workout.exercises[0].sets.length == 0)
+            return;
 
         let body = {
             name: tracker.current.workout.name,
@@ -19,34 +21,37 @@ const Workout = () => {
 
         postData('workouts/', body)
             .then(response => {
-                console.log(response);
                 tracker.current.workout.exercises.forEach(exercise => {
                     body = {
-                        name: exercise.name
+                        name: exercise.name,
+                        workout: response.data.id
                     }
 
                     postData('exercises/', body)
                         .then(response => {
-                            console.log(response);
                             exercise.sets.forEach(set => {
                                 body = {
                                     kilograms: set.kilograms,
                                     repetitions: set.repetitions,
                                     isFinished: set.isFinished,
-                                    isFailed: set.isFailed
+                                    isFailed: set.isFailed,
+                                    exercise: response.data.id
                                 }
 
                                 postData('sets/', body);
                             });
                         });
                 });
+
+                setIsTrackerVisible(!isTrackerVisible);
             });
     };
 
     const postData = async (URL, body) => {
         try {
             const response = await api.post(URL, body);
-            setResponses(responses.concat(response.data.response));
+            setResponses(responses.concat(response.data));
+            return response;
         } catch {
             setResponses(responses.concat('Something went wrong. Couldn\'t save workout session'));
         }
