@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import useAxios from "../utils/UseAxios";
+import Navbar from "./Navbar";
 import Tracker from "./Tracker";
 
 const Workout = () => {
@@ -59,6 +60,7 @@ const Workout = () => {
 
     return (
         <div>
+            {!isTrackerVisible && <Navbar />}
             <h1 className="text-7xl font-semibold tracking-wide text-stone-900 text-center align-middle max-w-7xl mx-auto my-20">Workout</h1>
             {isTrackerVisible
                 ? <>
