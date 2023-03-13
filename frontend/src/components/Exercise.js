@@ -5,7 +5,7 @@ import "../styles/exercise.css";
 
 const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeExercise }, ref) => {
     const [sets, setSets] = useState([]);
-    const [isTextareaDisplayed, setIsTextareaDisplayed] = useState(false);
+    const [isInstructionsDisplayed, setIsInstructionsDisplayed] = useState(false);
     const refs = useRef([]);
     const name = createRef();
     const instructions = createRef();
@@ -28,6 +28,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
         // Retrieve latest input field values, if changed
         refs.current.forEach(ref => ref.processChanges());
         updatedExercise['name'] = name.current.value;
+        updatedExercise['instructions'] = instructions.current.value;
         updatedExercise['sets'] = sets;
         setExercises(exercises.slice(0, exerciseNumber).concat([updatedExercise].concat(exercises.slice(exerciseNumber + 1))));
     }
@@ -64,7 +65,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
         instructions.current.style.animation = "appearAnimation 500ms linear both";
         instructions.current.style.width = "20%";
         instructions.current.style.display = "inline-block";
-        setIsTextareaDisplayed(!isTextareaDisplayed);
+        setIsInstructionsDisplayed(!isInstructionsDisplayed);
     };
 
     const onSaveInstructions = () => {
@@ -73,7 +74,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
         // Uses setTimeout to smooth animation (Prevent instant disappareance of textarea and lets animation play for 500ms)
         setTimeout(textarea => {
             textarea.style.display = "none";
-            setIsTextareaDisplayed(!isTextareaDisplayed);
+            setIsInstructionsDisplayed(!isInstructionsDisplayed);
         }, 500, instructions.current);
     };
 
@@ -82,7 +83,7 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
             <div className="flex content-center m-4">
                 <input type="text" id="exercise" name="exercise" ref={name} className="p-2 text-center bg-stone-700 justify-self-start self-center w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-auto" defaultValue={exercises[exerciseNumber]['name'] || ''} key={exercises[exerciseNumber]['name']} />
                 <textarea id="instructions" name="instructions" ref={instructions} rows={5} cols={60} minLength={10} maxLength={2048} className="p-2 text-justify bg-stone-700 justify-self-end self-center border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4 w-0 hidden" />
-                {isTextareaDisplayed
+                {isInstructionsDisplayed
                     ? <button onClick={() => onSaveInstructions()} title="Save instructions" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><CheckCircleIcon /></button>
                     : <button onClick={() => onAddInstructions()} title="Add instructions" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><PencilSquareIcon /></button>}
             </div>

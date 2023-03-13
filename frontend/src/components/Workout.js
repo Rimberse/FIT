@@ -25,6 +25,7 @@ const Workout = () => {
                 tracker.current.workout.exercises.forEach(exercise => {
                     body = {
                         name: exercise.name,
+                        instructions: exercise.instructions,
                         workout: response.data.id
                     }
 
