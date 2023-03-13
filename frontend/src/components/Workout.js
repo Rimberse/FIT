@@ -17,7 +17,8 @@ const Workout = () => {
 
         let body = {
             name: tracker.current.workout.name,
-            length: tracker.current.workout.length
+            length: tracker.current.workout.length,
+            note: tracker.current.workout.note
         };
 
         postData('workouts/', body)

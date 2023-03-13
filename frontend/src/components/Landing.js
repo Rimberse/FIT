@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import '../styles/landing.css';
 import Navbar from "./Navbar";
 import app from '../resources/illustrations/landing_fitness_tracker.svg';
@@ -85,9 +86,9 @@ const Landing = () => {
                 </svg>
             </div>
 
-            <button className="landing-page__button w-96 h-24 p-4 text-4xl mx-auto my-32 flex justify-center items-center font-bold tracking-wide uppercase text-white bg-violet-700 shadow-lg shadow-violet-700/50 hover:bg-indigo-500 rounded-md hover:-translate-y-2 ease-in-out duration-500">
+            <Link to={"/protected/workout"} className="landing-page__button w-96 h-24 p-4 text-4xl mx-auto my-32 flex justify-center items-center font-bold tracking-wide uppercase text-white bg-violet-700 shadow-lg shadow-violet-700/50 hover:bg-indigo-500 rounded-md hover:-translate-y-2 ease-in-out duration-500">
                 Start now
-            </button>
+            </Link>
         </div>
     )
 }
