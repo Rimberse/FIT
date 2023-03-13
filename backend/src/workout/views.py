@@ -23,6 +23,7 @@ class WorkoutApiView(APIView):
 
     # Create workout
     def post(self, request, *args, **kwargs):
+        logging.info(f'Body: {request.data}');
         # Create workout data for a given user
         data = {
             'name': request.data.get('name'), 
@@ -63,7 +64,7 @@ class ExerciseApiView(APIView):
     def post(self, request, *args, **kwargs):
         data = {
             'name': request.data.get('name'), 
-            'instructions': request.data.get('instructions'),
+            'instructions': request.data.get('instructions') if request.data.get('instructions') is not None else '',
             # Exercises can either be created independently from workout sessions to compose programs or be added to latest workout sessions, along with sets
             'workout': request.data.get('workout') if request.data.get('workout') is not None else Workout.objects.filter(author = request.user.id).last().id
         }
@@ -88,6 +89,7 @@ class SetApiView(APIView):
 
     # Add set to existing exercise
     def post(self, request, *args, **kwargs):
+         
         data = {
             'kilograms': request.data.get('kilograms') if request.data.get('kilograms') is not None else 0,
             'pounds': float(request.data.get('kilograms')) * 2.2046 if request.data.get('kilograms') is not None else 0,
