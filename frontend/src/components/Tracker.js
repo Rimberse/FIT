@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, createRef, forwardRef, useImperativeHandle } from "react";
 import SelfAdjustingInterval from "../utils/SelfAdjustingInterval";
 import Exercise from "./Exercise";
-import { PencilSquareIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
+import { PencilSquareIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 import "../styles/exercise.css";
 
 const Tracker = forwardRef(({  }, ref) => {
