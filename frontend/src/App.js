@@ -7,7 +7,7 @@ import Landing from './components/Landing';
 import Login from './components/Login';
 import Register from './components/Register';
 import Workout from './components/Workout';
-
+import History from './components/History';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Routes>
             <Route element={<PrivateRoute />} path="/protected" >
               <Route path='/protected/workout' element={<Workout />} />
+              <Route path='/protected/history' element={<History />} />
             </Route>
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
