@@ -1,8 +1,10 @@
 import React, { createRef, useRef, useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { ChevronDoubleDownIcon, ChevronDoubleUpIcon } from '@heroicons/react/24/solid';
+import Entry from "./Entry";
 
 const History = () => {
+    const [workouts, setWorkouts] = useState([]);
     const [exercisesRevealed, setExercisesRevealed] = useState(false);
     const [setsRevealed, setSetsRevealed] = useState([]);
     const exercises = createRef();
@@ -20,75 +22,146 @@ const History = () => {
         setSetsRevealed(newSetsRevealed);
     };
 
+    useEffect(() => {
+        setWorkouts([
+            {
+                name: 'Arms training',
+                length: '01:02:37',
+                note: 'Regular routine',
+                date: '03/06/2023',
+                exercises: [
+                    {
+                        name: 'Skull crushers',
+                        instructions: 'Use Ez-bar and swing it',
+                        sets: [
+                            {
+                                kilograms: 25,
+                                repetitions: 10,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 10,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 10,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 10,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 10,
+                                isFinished: true,
+                                isFailed: false
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Biceps curl',
+                        instructions: 'Use Ez-bar and lift it with both hands',
+                        sets: [
+                            {
+                                kilograms: 25,
+                                repetitions: 7,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 7,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 25,
+                                repetitions: 7,
+                                isFinished: true,
+                                isFailed: false
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Dumbell fly',
+                        instructions: 'Use dumbells and lift the pair with both hands',
+                        sets: [
+                            {
+                                kilograms: 20,
+                                repetitions: 8,
+                                isFinished: true,
+                                isFailed: false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: 'Grey skull',
+                length: '00:57:39',
+                note: 'Calendar program',
+                date: '27/10/2023',
+                exercises: [
+                    {
+                        name: 'Squat',
+                        instructions: 'Use olympic bar to perform squats',
+                        sets: [
+                            {
+                                kilograms: 95,
+                                repetitions: 3,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 95,
+                                repetitions: 3,
+                                isFinished: true,
+                                isFailed: false
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Deadlift',
+                        instructions: 'Use olympic bar and lift heavy weights',
+                        sets: [
+                            {
+                                kilograms: 100,
+                                repetitions: 7,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 110,
+                                repetitions: 7,
+                                isFinished: true,
+                                isFailed: false
+                            },
+                            {
+                                kilograms: 125,
+                                repetitions: 7,
+                                isFinished: false,
+                                isFailed: true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]);
+    }, []);
+
     return (
         <div>
             <Navbar />
             <div className="rounded shadow-sm shadow-violet-500 text-violet-700 text-base font-medium tracking-wide max-h-fit bg-clip-padding p-8 w-3/4 mx-auto my-48">
-                <div className="flex content-center text-3xl text-center align-middle">
-                    <span className="justify-self-start mr-auto p-3">Workout name</span>
-                    <span className="justify-self-end p-3">Length</span>
-                    <span className="justify-self-end p-3">Date</span>
-                </div>
-                <button onClick={() => onToggleExercisesVisibility()} className="h-14 w-14 hover:cursor-pointer p-3 rounded-full shadow-sm shadow-violet-500">{exercisesRevealed ? <ChevronDoubleUpIcon /> : <ChevronDoubleDownIcon />}</button>
-                <div className="text-xl">
-                    <ul ref={exercises} className="hidden">
-                        <li>
-                            <div className="px-9 py-3">Exercise name</div>
-                            <p className="text-justify px-9 py-3">Exercise instructions</p>
-                            <div className="flex justify-between content-center text-lg text-center px-16 py-3">
-                                <span className="w-1/5">Set</span>
-                                <span className="w-1/5">Previous</span>
-                                <span className="w-1/5">Kg</span>
-                                <span className="w-1/5">Reps</span>
-                                <span className="w-1/5">Completion</span>
-                            </div>
-                            <button onClick={() => onToggleSetsVisibility(0)} className="h-14 w-14 hover:cursor-pointer p-3 rounded-full shadow-sm shadow-violet-500">{setsRevealed[0] ? <ChevronDoubleUpIcon /> : <ChevronDoubleDownIcon />}</button>
-                            <ul ref={ref => sets.current[0] = ref} className="hidden">
-                                <li>
-                                    <div className="flex justify-between content-center text-base text-center px-16 py-3">
-                                        <span className="w-1/5">1</span>
-                                        <span className="w-1/5">...</span>
-                                        <span className="w-1/5">60</span>
-                                        <span className="w-1/5">7</span>
-                                        <span className="w-1/5">Yes</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div className="px-9 py-3">Exercise name</div>
-                            <p className="text-justify px-9 py-3">Exercise instructions</p>
-                            <div className="flex justify-between content-center text-lg text-center px-16 py-3">
-                                <span className="w-1/5">Set</span>
-                                <span className="w-1/5">Previous</span>
-                                <span className="w-1/5">Kg</span>
-                                <span className="w-1/5">Reps</span>
-                                <span className="w-1/5">Completion</span>
-                            </div>
-                            <button onClick={() => onToggleSetsVisibility(1)} className="h-14 w-14 hover:cursor-pointer p-3 rounded-full shadow-sm shadow-violet-500">{setsRevealed[1] ? <ChevronDoubleUpIcon /> : <ChevronDoubleDownIcon />}</button>
-                            <ul ref={ref => sets.current[1] = ref} className="hidden">
-                                <li>
-                                    <div className="flex justify-between content-center text-base text-center px-16 py-3">
-                                        <span className="w-1/5">1</span>
-                                        <span className="w-1/5">...</span>
-                                        <span className="w-1/5">60</span>
-                                        <span className="w-1/5">7</span>
-                                        <span className="w-1/5">Yes</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="flex justify-between content-center text-base text-center px-16 py-3">
-                                        <span className="w-1/5">2</span>
-                                        <span className="w-1/5">...</span>
-                                        <span className="w-1/5">60</span>
-                                        <span className="w-1/5">7</span>
-                                        <span className="w-1/5">No</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                {workouts.map((workout, index) => <Entry workout={workout} key={index} />)}
             </div>
         </div>
     );
