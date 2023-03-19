@@ -31,6 +31,7 @@ const Entry = ({ workout }) => {
                 <CalendarIcon className="justify-self-end self-center inline-block w-8 h-8" />
                 <span className="justify-self-end self-center p-3">{workout.date}</span>
             </div>
+            <blockquote><p className="text-justify indent-8 italic font-normal p-3">{workout.note}</p></blockquote>
             <button onClick={() => onToggleExercisesVisibility()} className="h-14 w-14 hover:cursor-pointer p-3 rounded-full shadow-sm shadow-violet-500 my-2">{exercisesRevealed ? <ChevronDoubleUpIcon /> : <ChevronDoubleDownIcon />}</button>
             <div className="text-violet-500 text-xl font-normal">
                 <ul ref={exercises} className="hidden">

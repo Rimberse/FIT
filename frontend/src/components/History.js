@@ -1,143 +1,45 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Entry from "./Entry";
+import useAxios from "../utils/UseAxios";
 
 const History = () => {
     const [workouts, setWorkouts] = useState([]);
+    const api = useAxios();
 
     useEffect(() => {
-        setWorkouts([
-            {
-                name: 'Arms training',
-                length: '01:02:37',
-                note: 'Regular routine',
-                date: '03/06/2023',
-                exercises: [
-                    {
-                        name: 'Skull crushers',
-                        instructions: 'Use Ez-bar and swing it',
-                        sets: [
-                            {
-                                kilograms: 25,
-                                repetitions: 10,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 10,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 10,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 10,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 10,
-                                isFinished: true,
-                                isFailed: false
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Biceps curl',
-                        instructions: 'Use Ez-bar and lift it with both hands',
-                        sets: [
-                            {
-                                kilograms: 25,
-                                repetitions: 7,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 7,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 25,
-                                repetitions: 7,
-                                isFinished: true,
-                                isFailed: false
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Dumbell fly',
-                        instructions: 'Use dumbells and lift the pair with both hands',
-                        sets: [
-                            {
-                                kilograms: 20,
-                                repetitions: 8,
-                                isFinished: true,
-                                isFailed: false
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: 'Grey skull',
-                length: '00:57:39',
-                note: 'Calendar program',
-                date: '27/10/2023',
-                exercises: [
-                    {
-                        name: 'Squat',
-                        instructions: 'Use olympic bar to perform squats',
-                        sets: [
-                            {
-                                kilograms: 95,
-                                repetitions: 3,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 95,
-                                repetitions: 3,
-                                isFinished: true,
-                                isFailed: false
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Deadlift',
-                        instructions: 'Use olympic bar and lift heavy weights',
-                        sets: [
-                            {
-                                kilograms: 100,
-                                repetitions: 7,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 110,
-                                repetitions: 7,
-                                isFinished: true,
-                                isFailed: false
-                            },
-                            {
-                                kilograms: 125,
-                                repetitions: 7,
-                                isFinished: false,
-                                isFailed: true
-                            }
-                        ]
-                    }
-                ]
+        const fetchData = async (URL) => {
+            try {
+                return await api.get(URL);
+            } catch {
+                console.warn('Something went wrong. Couldn\'t fetch workout related info');
             }
-        ]);
+        }
+
+        let allWorkouts, allExercises, allSets;
+
+        fetchData('workouts/')
+            .then(response => {
+                allWorkouts = response.data;
+
+                fetchData('exercises/')
+                    .then(response => {
+                        allExercises = response.data;
+
+                        fetchData('sets/')
+                            .then(response => {
+                                allSets = response.data;
+
+                                allExercises.forEach(exercise => exercise.sets = allSets.filter(set => set.exercise === exercise.id));
+                                allWorkouts.forEach(workout => {
+                                    workout.date = new Date(workout.date).toLocaleString('fr-FR');
+                                    workout.exercises = allExercises.filter(exercise => exercise.workout === workout.id);
+                                });
+
+                                setWorkouts(allWorkouts.reverse());
+                            });
+                    });
+            });
     }, []);
 
     return (
