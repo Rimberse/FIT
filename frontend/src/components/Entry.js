@@ -22,14 +22,34 @@ const Entry = ({ workout }) => {
         setSetsRevealed(newSetsRevealed);
     };
 
+    const formatLength = length => {
+        const parts = length.replaceAll("0", "").split(":");
+        let lengthFormatted = "";
+
+        if (parts[0].length !== 0)
+            lengthFormatted = lengthFormatted.concat(parts[0]).concat('h ');
+
+        if (parts[1].length !== 0)
+            lengthFormatted = lengthFormatted.concat(parts[1]).concat('m');
+        else
+            lengthFormatted = lengthFormatted.concat(parts[2]).concat('s');
+
+        return lengthFormatted;
+    }
+
+    const formatDate = date => {
+        const parts = date.split(":");
+        return `${parts[0]}:${parts[1]}`;
+    }
+
     return (
         <div className="rounded shadow-sm shadow-violet-500 bg-clip-padding p-8 mx-auto my-6">
             <div className="flex content-center text-3xl text-center align-middle">
                 <span className="justify-self-start self-center mr-auto p-3">{workout.name}</span>
                 <ClockIcon className="justify-self-end self-center inline-block w-8 h-8" />
-                <span className="justify-self-end self-center p-3 mr-3">{workout.length}</span>
+                <span className="justify-self-end self-center p-3 mr-3">{formatLength(workout.length)}</span>
                 <CalendarIcon className="justify-self-end self-center inline-block w-8 h-8" />
-                <span className="justify-self-end self-center p-3">{workout.date}</span>
+                <span className="justify-self-end self-center p-3">{formatDate(workout.date)}</span>
             </div>
             <blockquote><p className="text-justify indent-8 italic font-normal p-3">{workout.note}</p></blockquote>
             <button onClick={() => onToggleExercisesVisibility()} className="h-14 w-14 hover:cursor-pointer p-3 rounded-full shadow-sm shadow-violet-500 my-2">{exercisesRevealed ? <ChevronDoubleUpIcon /> : <ChevronDoubleDownIcon />}</button>
