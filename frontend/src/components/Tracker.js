@@ -117,7 +117,7 @@ const Tracker = forwardRef(({  }, ref) => {
     };
 
     return (
-        <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white lg:text-base text-xs font-medium tracking-wide uppercase lg:w-3/4 max-h-fit bg-clip-padding bg-stone-900 lg:mx-auto mx-5 my-20 2xl:p-8 xl:p-7 lg:p-6 p-4">
+        <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white xl:text-base lg:text-sm text-xs font-medium tracking-wide uppercase lg:w-3/4 max-h-fit bg-clip-padding bg-stone-900 lg:mx-auto mx-5 my-20 2xl:p-8 xl:p-7 lg:p-6 p-4">
             <div className="flex content-center lg:m-4 m-2">
                 <span className="justify-self-start self-center 2xl:text-4xl xl:text-2xl lg:text-xl text-lg lg:font-bold font-semibold lg:tracking-wide w-1/4 mr-auto">{timer}</span>
                 <input type="text" id="name" name="name" ref={name} className="justify-self-end self-center p-2 text-center 2xl:text-xl xl:text-base lg:text-sm text-xs lg:font-bold font-semibold lg:tracking-wide bg-stone-700 w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4" defaultValue={'Enter workout name'} key={name} />
