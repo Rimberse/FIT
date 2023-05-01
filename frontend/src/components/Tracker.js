@@ -117,17 +117,17 @@ const Tracker = forwardRef(({  }, ref) => {
     };
 
     return (
-        <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white text-base font-medium tracking-wide uppercase w-3/4 max-h-fit bg-clip-padding bg-stone-900 mx-auto my-20 p-8">
-            <div className="flex content-center m-4">
-                <span className="justify-self-start self-center text-4xl font-bold tracking-wide w-1/4 mr-auto">{timer}</span>
-                <input type="text" id="name" name="name" ref={name} className="justify-self-end self-center p-2 text-center text-2xl font-bold tracking-wide bg-stone-700 w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4" defaultValue={'Enter workout name'} key={name} />
-                <textarea id="note" name="note" ref={note} rows={3} cols={40} minLength={10} maxLength={512} className="p-2 text-justify bg-stone-700 justify-self-end self-center border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4 w-0 hidden" />
+        <div className="table-fixed rounded shadow-md shadow-black text-center align-middle text-white lg:text-base text-xs font-medium tracking-wide uppercase lg:w-3/4 max-h-fit bg-clip-padding bg-stone-900 lg:mx-auto mx-5 my-20 2xl:p-8 xl:p-7 lg:p-6 p-4">
+            <div className="flex content-center lg:m-4 m-2">
+                <span className="justify-self-start self-center 2xl:text-4xl xl:text-2xl lg:text-xl text-lg lg:font-bold font-semibold lg:tracking-wide w-1/4 mr-auto">{timer}</span>
+                <input type="text" id="name" name="name" ref={name} className="justify-self-end self-center p-2 text-center 2xl:text-xl xl:text-base lg:text-sm text-xs lg:font-bold font-semibold lg:tracking-wide bg-stone-700 w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4" defaultValue={'Enter workout name'} key={name} />
+                <textarea id="note" name="note" ref={note} rows={3} cols={30} minLength={10} maxLength={512} className="lg:p-2 p-1 text-justify bg-stone-700 justify-self-end self-center border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4 w-0 hidden" />
                 {isNoteDisplayed
-                    ? <button onClick={() => onSaveNote()} title="Save workout note" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><CheckCircleIcon /></button>
-                    : <button onClick={() => onAddNote()} title="Add workout note" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><PencilSquareIcon /></button>}
+                    ? <button onClick={() => onSaveNote()} title="Save workout note" className="2xl:h-8 2xl:w-8 xl:h-7 xl:w-7 lg:h-6 lg:w-6 h-4 w-4 justify-self-end self-center text-stone-300 hover:cursor-pointer"><CheckCircleIcon /></button>
+                    : <button onClick={() => onAddNote()} title="Add workout note" className="2xl:h-8 2xl:w-8 xl:h-7 xl:w-7 lg:h-6 lg:w-6 h-4 w-4 justify-self-end self-center text-stone-300 hover:cursor-pointer"><PencilSquareIcon /></button>}
             </div>
             {exercises.map((exercise, index) => <Exercise ref={ref => refs.current[index] = ref} key={index} exerciseNumber={index} exercises={exercises} setExercises={setExercises} removeExercise={onRemoveExercise} />)}
-            <button onClick={onAddExercise} className="p-4 bg-stone-300 text-stone-900 justify-self-center m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add exercise</button>
+            <button onClick={onAddExercise} className="lg:p-4 p-2 bg-stone-300 text-stone-900 justify-self-center m-4 w-1/4 lg:font-bold font-semibold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add exercise</button>
         </div>
     );
 });
