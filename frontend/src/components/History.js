@@ -72,13 +72,13 @@ const History = () => {
     return (
         <div>
             <Navbar />
-            <div className="text-violet-700 text-base font-medium tracking-wide max-h-fit bg-clip-padding p-8 w-3/4 mx-auto my-40">
+            <div className="text-violet-700 xl:text-base lg:text-sm text-xs font-medium lg:tracking-wide max-h-fit bg-clip-padding lg:p-8 p-4 w-3/4 mx-auto lg:my-40 my-20">
                 {workoutsOnCurrentPage.map((workout, index) => <Entry workout={workout} key={index} />)}
             </div>
-            <div className="flex justify-center content-center text-xl text-violet-700 font-semibold text-center align-middle">
-                <button disabled={(page > 1) ? false : true} onClick={() => onSwitchToPreviousPage()} className="h-16 w-16 hover:cursor-pointer p-5 rounded-full shadow-sm shadow-violet-700 m-5"><ChevronLeftIcon /></button>
-                <span className="h-16 w-16 p-5 rounded-full shadow-sm shadow-violet-700 m-5">{page}</span>
-                <button disabled={(page + 1 < workouts.length / offset) ? false : true} onClick={() => onSwitchToNextPage()} className="h-16 w-16 hover:cursor-pointer p-5 rounded-full shadow-sm shadow-violet-700 m-5"><ChevronRightIcon /></button>
+            <div className="flex justify-center content-center lg:text-xl text-xs text-violet-700 font-semibold text-center align-middle">
+                <button disabled={(page > 1) ? false : true} onClick={() => onSwitchToPreviousPage()} className="lg:h-16 lg:w-16 h-10 w-10 hover:cursor-pointer lg:p-5 p-2 rounded-full shadow-sm shadow-violet-700 m-5"><ChevronLeftIcon /></button>
+                <span className="lg:h-16 lg:w-16 h-10 w-10 lg:p-5 p-2 rounded-full shadow-sm shadow-violet-700 m-5">{page}</span>
+                <button disabled={(page + 1 < workouts.length / offset) ? false : true} onClick={() => onSwitchToNextPage()} className="lg:h-16 lg:w-16 h-10 w-10 hover:cursor-pointer lg:p-5 p-2 rounded-full shadow-sm shadow-violet-700 m-5"><ChevronRightIcon /></button>
             </div>
         </div>
     );
