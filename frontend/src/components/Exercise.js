@@ -80,24 +80,24 @@ const Exercise = forwardRef(({ exerciseNumber, exercises, setExercises, removeEx
 
     return (
         <div className="grid auto-rows-auto divide-y divide-stone-700">
-            <div className="flex content-center m-4">
+            <div className="flex content-center lg:m-4 m-2">
                 <input type="text" id="exercise" name="exercise" ref={name} className="p-2 text-center bg-stone-700 justify-self-start self-center w-1/4 border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-auto" defaultValue={exercises[exerciseNumber]['name'] || ''} key={exercises[exerciseNumber]['name']} />
-                <textarea id="instructions" name="instructions" ref={instructions} rows={5} cols={60} minLength={10} maxLength={2048} className="p-2 text-justify bg-stone-700 justify-self-end self-center border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4 w-0 hidden" />
+                <textarea id="instructions" name="instructions" ref={instructions} rows={5} cols={50} minLength={10} maxLength={2048} className="p-2 text-justify bg-stone-700 justify-self-end self-center border shadow-sm border-stone-700 placeholder-white focus:outline-none focus:border-stone-300 focus:ring-stone-300 rounded-lg focus:ring-1 mr-4 w-0 hidden" />
                 {isInstructionsDisplayed
-                    ? <button onClick={() => onSaveInstructions()} title="Save instructions" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><CheckCircleIcon /></button>
-                    : <button onClick={() => onAddInstructions()} title="Add instructions" className="h-8 w-8 justify-self-end self-center text-stone-300 hover:cursor-pointer"><PencilSquareIcon /></button>}
+                    ? <button onClick={() => onSaveInstructions()} title="Save instructions" className="2xl:h-8 2xl:w-8 xl:h-7 xl:w-7 lg:h-6 lg:w-6 h-4 w-4 justify-self-end self-center text-stone-300 hover:cursor-pointer"><CheckCircleIcon /></button>
+                    : <button onClick={() => onAddInstructions()} title="Add instructions" className="2xl:h-8 2xl:w-8 xl:h-7 xl:w-7 lg:h-6 lg:w-6 h-4 w-4 justify-self-end self-center text-stone-300 hover:cursor-pointer"><PencilSquareIcon /></button>}
             </div>
-            <div className="grid grid-flow-col auto-rows-max grid-cols-[1fr,1fr,1fr,1fr,1fr,max-content] gap-x-8 place-content-evenly">
+            <div className="grid grid-flow-col auto-rows-max grid-cols-[1fr,1fr,1fr,1fr,1fr,max-content] lg:gap-x-8 gap-x-4 place-content-evenly">
                 <span className="p-2 inline-flex justify-center items-center my-2">Set</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Previous</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Kg</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Reps</span>
                 <span className="p-2 inline-flex justify-center items-center my-2">Completion</span>
-                <span className="h-7 w-7 justify-self-end self-center mr-5 my-2"></span>
+                <span className="2xl:h-7 2xl:w-7 xl:h-6 xl:w-6 lg:h-5 lg:w-5 h-3 w-3 justify-self-end self-center mr-5 my-2"></span>
             </div>
             {sets.map((set, index) => <Set ref={ref => refs.current[index] = ref} key={index} setNumber={index + 1} sets={sets} setSets={setSets} removeSet={onRemoveSet} />)}
-            <button onClick={onAddSet} className="p-4 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
-            <button onClick={onRemoveExercise} className="p-4 bg-red-500 text-stone-300 justify-self-end m-4 w-1/4 font-bold tracking-wide uppercase hover:bg-red-900 hover:text-white rounded-md">Remove exercise</button>
+            <button onClick={onAddSet} className="lg:p-4 p-2 text-center bg-stone-300 text-stone-900 justify-self-end m-4 w-1/4 lg:font-bold font-semibold lg:tracking-wide uppercase hover:bg-stone-700 hover:text-white rounded-md">Add set</button>
+            <button onClick={onRemoveExercise} className="lg:p-4 p-2 bg-red-500 text-stone-300 justify-self-end m-4 w-1/4 lg:font-bold font-semibold lg:tracking-wide uppercase hover:bg-red-900 hover:text-white rounded-md">Remove exercise</button>
         </div>
     );
 });

@@ -63,16 +63,16 @@ const Workout = () => {
     return (
         <div>
             {!isTrackerVisible && <Navbar />}
-            <h1 className="text-7xl font-semibold tracking-wide text-stone-900 text-center align-middle max-w-7xl mx-auto my-20">Workout</h1>
+            <h1 className="2xl:text-7xl xl:text-6xl lg:text-5xl text-3xl font-semibold tracking-wide text-stone-900 text-center align-middle max-w-7xl mx-auto my-20">Workout</h1>
             {isTrackerVisible
                 ? <>
                     <Tracker ref={tracker} />
                     <div className="flex justify-evenly items-center">
-                        <button onClick={() => setIsTrackerVisible(!isTrackerVisible)} className="inline-block p-2 text-center align-middle uppercase rounded-lg shadow-lg ring-offset-2 ring-2 ring-rose-900/50 hover:ring-rose-800 w-52 h-12 text-xl text-white bg-rose-700 hover:bg-rose-800 active:bg-rose-900 focus:ring-zinc-300 mx-7 my-7">Cancel workout</button>
-                        <button onClick={() => onFinish()} className="inline-block p-2 text-center align-middle uppercase rounded-lg shadow-lg ring-offset-2 ring-2 ring-emerald-900/50 hover:ring-emerald-800 w-52 h-12 text-xl text-white bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:ring-zinc-300 mx-7 my-7">Finish</button>
+                        <button onClick={() => setIsTrackerVisible(!isTrackerVisible)} className="inline-block p-2 text-center align-middle uppercase rounded-lg shadow-lg ring-offset-2 ring-2 ring-rose-900/50 hover:ring-rose-800 2xl:w-52 2xl:h-12 xl:w-48 xl:h-12 lg:w-48 lg:h-10 w-40 h-10 lg:text-xl text-base text-white bg-rose-700 hover:bg-rose-800 active:bg-rose-900 focus:ring-zinc-300 mx-7 my-7">Cancel workout</button>
+                        <button onClick={() => onFinish()} className="inline-block p-2 text-center align-middle uppercase rounded-lg shadow-lg ring-offset-2 ring-2 ring-emerald-900/50 hover:ring-emerald-800 2xl:w-52 2xl:h-12 xl:w-48 xl:h-12 lg:w-48 lg:h-10 w-40 h-10 lg:text-xl text-base text-white bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:ring-zinc-300 mx-7 my-7">Finish</button>
                     </div>
                 </>
-                : <button onClick={() => setIsTrackerVisible(!isTrackerVisible)} className="p-2 rounded-lg shadow-lg ring-offset-2 ring-2 ring-zinc-900/50 hover:ring-zinc-800 w-96 h-20 text-2xl font-bold uppercase tracking-wide text-white flex justify-center items-center bg-zinc-700 hover:bg-zinc-800 active:bg-zinc-900 focus:ring-zinc-300 mx-auto my-28">Start an empty workout</button>
+                : <button onClick={() => setIsTrackerVisible(!isTrackerVisible)} className="p-2 rounded-lg shadow-lg ring-offset-2 ring-2 ring-zinc-900/50 hover:ring-zinc-800 2xl:w-96 2xl:h-20 xl:w-80 xl:h-20 lg:w-72 lg:h-20 w-64 h-16 xl:text-2xl lg:text-xl text-base font-bold uppercase tracking-wide text-white flex justify-center items-center bg-zinc-700 hover:bg-zinc-800 active:bg-zinc-900 focus:ring-zinc-300 mx-auto my-28">Start an empty workout</button>
             }
         </div>
     );
