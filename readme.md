@@ -16,6 +16,8 @@ Application lets to create workout session, name it, add note and compose this w
 
 By default users create register on the website to create their profile, which lets in turn to track their workout history. This enables possibility of consulting all past workouts with all the information provided for this workout session.
 
+> :movie_camera: **Product demo video** can be found [here](https://youtu.be/3dJdSfd3ZQU)
+
 ## Tech
 
 FIT uses a number of open source projects to work properly:
@@ -67,7 +69,9 @@ Description and functionalities of each of them are linked below.
 
 ## Installation
 
-FIT requires [Python](https://www.python.org) v3+ to run.
+> :warning: **NOTE:** The whole application can be started up using `docker compose up` and running **backend** with the following command: `python manage.py runserver` if you already have docker-compose file
+
+FIT requires [Python](https://www.python.org) v3+ to run. 
 
 Install the dependencies and devDependencies and start the server.
 
